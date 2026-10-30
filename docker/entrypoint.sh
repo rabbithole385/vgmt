@@ -16,7 +16,8 @@ if [ ! -f "$DATA_DIR/.seeded-uploads" ]; then
     touch "$DATA_DIR/.seeded-uploads"
 fi
 
-chown -R www-data:www-data "$DATA_DIR" "$UPLOADS_PATH"
+chown -R www-data:www-data "$DATA_DIR" "$UPLOADS_PATH" /opt/vmgt 2>/dev/null || true
+export BOOTSTRAP_SQL_DIR="${BOOTSTRAP_SQL_DIR:-/opt/vmgt/sql}"
 
 # Apache: listen on $PORT, serve /uploads from the persistent folder with scripts disabled.
 echo "Listen ${PORT}" > /etc/apache2/ports.conf
@@ -46,6 +47,6 @@ cat > /etc/apache2/sites-available/000-default.conf <<APACHE
 APACHE
 
 # Bootstrap as the web user so the SQLite file is owned correctly.
-runuser -u www-data -- php /opt/vmgt/bin/bootstrap.php
+runuser -u www-data -- env BOOTSTRAP_SQL_DIR="$BOOTSTRAP_SQL_DIR" APP_ROOT="${APP_ROOT:-/var/www/html}" php /opt/vmgt/bin/bootstrap.php
 
 exec apache2-foreground

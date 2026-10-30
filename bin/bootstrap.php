@@ -12,8 +12,29 @@ if (PHP_SAPI !== 'cli') {
     exit;
 }
 
-$appRoot = getenv('APP_ROOT') ?: dirname(__DIR__);
-$sqlDir  = getenv('BOOTSTRAP_SQL_DIR') ?: $appRoot . '/sql';
+$appRoot = getenv('APP_ROOT') ?: '/var/www/html';
+if (!is_dir($appRoot)) {
+    $appRoot = dirname(__DIR__);
+}
+
+$candidates = array_filter([
+    getenv('BOOTSTRAP_SQL_DIR'),
+    '/opt/vmgt/sql',
+    $appRoot . '/sql',
+    dirname(__DIR__) . '/sql',
+    __DIR__ . '/../sql',
+]);
+
+$sqlDir = null;
+foreach ($candidates as $dir) {
+    if ($dir && is_dir($dir) && (is_file($dir . '/schema.sqlite.sql') || is_file($dir . '/schema.sql'))) {
+        $sqlDir = $dir;
+        break;
+    }
+}
+if (!$sqlDir) {
+    $sqlDir = getenv('BOOTSTRAP_SQL_DIR') ?: (is_dir('/opt/vmgt/sql') ? '/opt/vmgt/sql' : $appRoot . '/sql');
+}
 
 require_once $appRoot . '/config.php';
 
