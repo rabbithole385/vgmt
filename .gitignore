@@ -1,0 +1,13 @@
+# SQLite & local runtime storage
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+storage/*.sqlite*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

@@ -5,6 +5,7 @@ services:
   - type: web
     name: vmgt-bookings
     runtime: docker
+    plan: starter                # Persistent disk requires Starter plan ($7/mo)
     dockerfilePath: ./Dockerfile
     region: frankfurt            # closest Render region to Nigeria
     autoDeployTrigger: commit    # redeploy automatically on every push
