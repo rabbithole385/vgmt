@@ -16,85 +16,136 @@ $vacations = array_slice(get_vacations(), 0, 3);
 require __DIR__ . '/includes/templates/header.php';
 ?>
 
-<!-- Luxury Hero Section -->
-<section class="hero">
-    <div class="container hero-inner">
-        <span class="badge badge-gold" style="margin-bottom: 14px;">✨ WORLD-CLASS TALENT & VIP ESCAPES</span>
-        <h1>Book Iconic Celebrities & <span class="text-gold">Luxury Vacations</span></h1>
-        <p class="hero-subtitle"><?= e(get_setting('hero_subtitle', 'Direct access to global stars, keynote speakers, and bespoke all-inclusive luxury retreats.')) ?></p>
-        
-        <div class="hero-cta-group">
-            <a href="/book.php" class="btn btn-primary btn-lg">⚡ Instant VIP Booking</a>
-            <a href="/vacations.php" class="btn btn-outline btn-lg">🌴 View VIP Vacations</a>
-        </div>
-
-        <!-- Interactive Dynamic Image Shuffler Showcase -->
-        <div class="showcase-container">
-            <div class="showcase-header">
-                <div class="showcase-title">
-                    <span>🌟 Featured Roster & Getaways</span>
-                </div>
-                <button type="button" class="btn-shuffle" id="btnShuffleShowcase">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
-                    Shuffle Showcase
-                </button>
+<!-- Immersive Cinematic Hero Section -->
+<section class="cinematic-hero">
+    <div class="hero-backdrop"></div>
+    <div class="hero-overlay-gradient"></div>
+    
+    <div class="container hero-container">
+        <div class="hero-content">
+            <div class="hero-badge-wrap">
+                <span class="badge badge-gold">
+                    <span class="badge-dot-live"></span>
+                    ★ PREMIER TALENT & VIP VACATION CONCIERGE
+                </span>
+            </div>
+            
+            <h1 class="hero-title">
+                Where Iconic Stars Meet <br><span class="text-gold">Unforgettable Moments</span>
+            </h1>
+            
+            <p class="hero-description">
+                Direct, discreet access to Hollywood A-listers, global music chart-toppers, keynote visionaries, and private island luxury getaways.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="/book.php" class="btn btn-primary btn-lg">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    Book A Celebrity
+                </a>
+                <a href="/vacations.php" class="btn btn-outline btn-lg">
+                    🌴 Explore VIP Vacations
+                </a>
             </div>
 
-            <!-- Horizontal Swipe Rail for Mobile & Grid for Desktop -->
-            <div class="app-rail" id="showcaseRail">
-                <?php foreach ($featured as $celeb): ?>
-                    <div class="app-rail-item">
-                        <a class="celebrity-card" href="/celebrity.php?slug=<?= e($celeb['slug']) ?>">
-                            <div class="celebrity-photo">
-                                <span class="celebrity-verified-badge">✓ VIP</span>
-                                <img src="/uploads/celebrities/<?= e($celeb['image']) ?>" alt="<?= e($celeb['name']) ?>" loading="lazy">
-                            </div>
-                            <div class="celebrity-info">
-                                <h3><?= e($celeb['name']) ?></h3>
-                                <span class="category"><?= e($celeb['category']) ?></span>
-                                <div class="celebrity-card-actions">
-                                    <span class="btn btn-primary btn-card-book">Book VIP</span>
-                                </div>
-                            </div>
-                        </a>
+            <!-- Floating Quick Concierge Bar (Desktop & Mobile) -->
+            <div class="hero-concierge-bar">
+                <a href="/celebrities.php" class="concierge-col">
+                    <div class="concierge-icon">⭐</div>
+                    <div>
+                        <span class="concierge-label">TALENT ROSTER</span>
+                        <span class="concierge-val">Browse 500+ Global Icons</span>
                     </div>
-                <?php endforeach; ?>
+                </a>
+                <div class="concierge-divider"></div>
+                <a href="/vacations.php" class="concierge-col">
+                    <div class="concierge-icon">🌴</div>
+                    <div>
+                        <span class="concierge-label">VIP GETAWAYS</span>
+                        <span class="concierge-val">Maldives, Swiss Alps, Cannes</span>
+                    </div>
+                </a>
+                <div class="concierge-divider"></div>
+                <a href="/book.php" class="concierge-col concierge-cta">
+                    <div class="concierge-icon">⚡</div>
+                    <div>
+                        <span class="concierge-label">FAST-TRACK</span>
+                        <span class="concierge-val">Instant VIP Inquiry &rarr;</span>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Trust Metrics Bar -->
-<section style="background: var(--color-surface); padding: 36px 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+<section class="trust-metrics-bar">
     <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center;">
-            <div>
-                <div style="font-size: 2rem; font-weight: 800; color: var(--color-gold);">500+</div>
-                <div style="font-size: 0.85rem; color: var(--color-text-muted);">Verified A-List Icons</div>
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <div class="metric-num text-gold">500+</div>
+                <div class="metric-label">Verified Global Icons</div>
             </div>
-            <div>
-                <div style="font-size: 2rem; font-weight: 800; color: var(--color-cyan);">35+</div>
-                <div style="font-size: 0.85rem; color: var(--color-text-muted);">Global Vacation Destinations</div>
+            <div class="metric-item">
+                <div class="metric-num text-cyan">35+</div>
+                <div class="metric-label">Luxury Destinations</div>
             </div>
-            <div>
-                <div style="font-size: 2rem; font-weight: 800; color: var(--color-gold);">100%</div>
-                <div style="font-size: 0.85rem; color: var(--color-text-muted);">Discreet Confidentiality</div>
+            <div class="metric-item">
+                <div class="metric-num text-gold">100%</div>
+                <div class="metric-label">NDA Confidentiality</div>
             </div>
-            <div>
-                <div style="font-size: 2rem; font-weight: 800; color: var(--color-cyan);">24 / 7</div>
-                <div style="font-size: 0.85rem; color: var(--color-text-muted);">Dedicated VIP Concierge</div>
+            <div class="metric-item">
+                <div class="metric-num text-cyan">24 / 7</div>
+                <div class="metric-label">VIP Concierge Desk</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Featured Celebrities Roster -->
+<!-- Interactive Dynamic Image Shuffler Showcase -->
+<section class="showcase-section">
+    <div class="container">
+        <div class="showcase-header">
+            <div>
+                <span class="badge badge-gold" style="margin-bottom: 6px;">TRENDING NOW</span>
+                <h2 style="margin: 0; font-size: 1.6rem;">Featured VIP Talent Roster</h2>
+            </div>
+            <button type="button" class="btn-shuffle" id="btnShuffleShowcase">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+                Shuffle Stars
+            </button>
+        </div>
+
+        <!-- Horizontal Swipe Rail for Mobile & Grid for Desktop -->
+        <div class="app-rail" id="showcaseRail">
+            <?php foreach ($featured as $celeb): ?>
+                <div class="app-rail-item">
+                    <a class="celebrity-card" href="/celebrity.php?slug=<?= e($celeb['slug']) ?>">
+                        <div class="celebrity-photo">
+                            <span class="celebrity-verified-badge">✓ VIP</span>
+                            <img src="/uploads/celebrities/<?= e($celeb['image']) ?>" alt="<?= e($celeb['name']) ?>" loading="lazy">
+                        </div>
+                        <div class="celebrity-info">
+                            <h3><?= e($celeb['name']) ?></h3>
+                            <span class="category"><?= e($celeb['category']) ?></span>
+                            <div class="celebrity-card-actions">
+                                <span class="btn btn-primary btn-card-book">Book VIP</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<!-- Celebrity Directory Section with Mobile 2-Column Grid -->
 <section class="celebrities-section">
     <div class="container">
-        <div style="text-align: center; margin-bottom: 30px;">
-            <span class="badge badge-gold" style="margin-bottom: 8px;">PREMIER ROSTER</span>
-            <h2>Celebrities & Keynote Figures</h2>
-            <p class="section-subtitle">Browse iconic actors, international music artists, and visionary keynote speakers available for global bookings.</p>
+        <div style="text-align: center; margin-bottom: 24px;">
+            <span class="badge badge-gold" style="margin-bottom: 8px;">CURATED ROSTER</span>
+            <h2>Celebrities & Public Figures</h2>
+            <p class="section-subtitle">Select your talent for keynotes, exclusive private appearances, galas, or brand campaigns.</p>
 
             <!-- App Filter Pills -->
             <div class="filter-pills" style="justify-content: center;">
@@ -127,19 +178,19 @@ require __DIR__ . '/includes/templates/header.php';
             <?php endforeach; ?>
         </div>
 
-        <div class="section-cta" style="margin-top: 40px;">
+        <div class="section-cta" style="margin-top: 36px;">
             <a href="/celebrities.php" class="btn btn-outline">Explore Full Celebrity Roster &rarr;</a>
         </div>
     </div>
 </section>
 
-<!-- Brand New VIP Vacations Showcase on Home -->
+<!-- VIP Vacations Showcase Section -->
 <section class="vacations-section">
     <div class="container">
-        <div style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 30px;">
+        <div class="section-header-row">
             <div>
                 <span class="badge badge-gold" style="margin-bottom: 8px;">ALL-INCLUSIVE GETAWAYS</span>
-                <h2 style="margin-bottom: 8px;">VIP Vacations With Celebrities</h2>
+                <h2 style="margin-bottom: 6px;">VIP Vacations With Celebrities</h2>
                 <p style="margin: 0; max-width: 580px;">Combine exotic luxury destinations with intimate celebrity host access. Private islands, superyacht voyages, and alpine chalets.</p>
             </div>
             <a href="/vacations.php" class="btn btn-outline btn-sm">View All Vacations (<?= count(get_vacations()) ?>) &rarr;</a>

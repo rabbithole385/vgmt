@@ -27,22 +27,37 @@ $currentPage = $currentPage ?? '';
             <img src="/assets/images/logo.png" alt="<?= e($siteName) ?>">
         </a>
 
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
         <nav class="main-nav" id="mainNav">
-            <a href="/" class="<?= $currentPage === 'home' ? 'active' : '' ?>">Home</a>
-            <a href="/celebrities.php" class="<?= $currentPage === 'celebrities' ? 'active' : '' ?>">Celebrities</a>
-            <a href="/vacations.php" class="<?= $currentPage === 'vacations' ? 'active' : '' ?>" style="display: inline-flex; align-items: center; gap: 6px;">
-                <span>VIP Vacations</span>
-                <span class="badge badge-gold" style="padding: 2px 7px; font-size: 0.65rem;">NEW</span>
-            </a>
-            <a href="/blog.php" class="<?= $currentPage === 'blog' ? 'active' : '' ?>">News</a>
-            <a href="/about.php" class="<?= $currentPage === 'about' ? 'active' : '' ?>">About</a>
-            <a href="/contact.php" class="<?= $currentPage === 'contact' ? 'active' : '' ?>">Contact</a>
-            <a href="/book.php" class="btn btn-primary nav-cta">Book VIP</a>
+            <div class="mobile-nav-header">
+                <img src="/assets/images/logo_white.png" alt="<?= e($siteName) ?>" height="32">
+                <button type="button" class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close Menu">✕</button>
+            </div>
+
+            <div class="mobile-nav-links">
+                <a href="/" class="<?= $currentPage === 'home' ? 'active' : '' ?>">Home</a>
+                <a href="/celebrities.php" class="<?= $currentPage === 'celebrities' ? 'active' : '' ?>">Celebrities</a>
+                <a href="/vacations.php" class="<?= $currentPage === 'vacations' ? 'active' : '' ?>">
+                    <span>VIP Vacations</span>
+                    <span class="badge badge-gold" style="padding: 2px 7px; font-size: 0.65rem;">NEW</span>
+                </a>
+                <a href="/blog.php" class="<?= $currentPage === 'blog' ? 'active' : '' ?>">News</a>
+                <a href="/about.php" class="<?= $currentPage === 'about' ? 'active' : '' ?>">About</a>
+                <a href="/contact.php" class="<?= $currentPage === 'contact' ? 'active' : '' ?>">Contact</a>
+            </div>
+
+            <div class="mobile-nav-footer">
+                <a href="/book.php" class="btn btn-primary nav-cta">⚡ Book VIP Experience</a>
+            </div>
         </nav>
 
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
-            <span></span><span></span><span></span>
-        </button>
+        <div class="header-right-actions">
+            <a href="/book.php" class="btn btn-primary desktop-cta-btn">Book VIP</a>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
 </header>
 
