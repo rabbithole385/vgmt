@@ -318,3 +318,131 @@ function format_date(?string $datetime, string $format = 'M j, Y'): string
     $ts = strtotime($datetime);
     return $ts ? date($format, $ts) : '';
 }
+
+// ---------------------------------------------------------------
+// VIP Vacations & Luxury Getaways
+// ---------------------------------------------------------------
+function get_vacations(): array
+{
+    static $vacations = null;
+    if ($vacations !== null) {
+        return $vacations;
+    }
+
+    $vacations = [
+        [
+            'id' => 1,
+            'slug' => 'maldives-atoll-keanu',
+            'title' => 'Maldives Private Island & Sunset Cruise',
+            'destination' => 'Baa Atoll, Maldives',
+            'duration' => '5 Days / 4 Nights',
+            'celebrity_host' => 'Keanu Reeves',
+            'host_image' => 'Keanu-Reeves.png',
+            'host_slug' => 'keanu-reeves',
+            'image' => 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80',
+            'price' => '$14,500 / guest',
+            'tag' => 'Ultra VIP',
+            'category' => 'Island Luxury',
+            'rating' => '5.0 (24 reviews)',
+            'highlights' => ['Private Overwater Villa', 'Helicopter Island Transfer', 'Exclusive Sunset Dinner Cruise', 'Private 1-on-1 Fireside Chat'],
+            'description' => 'Escape to an ultra-private 5-star Maldivian coral atoll. Enjoy crystalline turquoise lagoons, private coral reef diving, and intimate seaside dinners hosted in an exclusive small-group retreat alongside Keanu Reeves.'
+        ],
+        [
+            'id' => 2,
+            'slug' => 'swiss-alps-hugh-jackman',
+            'title' => 'Swiss Alps Luxury Ski Chalet & Gala',
+            'destination' => 'Zermatt, Switzerland',
+            'duration' => '6 Days / 5 Nights',
+            'celebrity_host' => 'Hugh Jackman',
+            'host_image' => 'Hugh-Michael-Jackman.png',
+            'host_slug' => 'hugh-jackman',
+            'image' => 'https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1200&q=80',
+            'price' => '$18,000 / guest',
+            'tag' => 'Alpine Grandeur',
+            'category' => 'Mountain Retreat',
+            'rating' => '4.9 (19 reviews)',
+            'highlights' => ['Matterhorn Panoramic Chalet', 'Private Heliskiing Passes', 'Michelin-Star Fireside Dining', 'VIP Creative Masterclass'],
+            'description' => 'Ascend to the breathtaking peaks of Zermatt with Hugh Jackman. Experience fresh Alpine powder, private heated infinity pools with views of the Matterhorn, and five-star evening soirees by the fireplace.'
+        ],
+        [
+            'id' => 3,
+            'slug' => 'santorini-michele-morrone',
+            'title' => 'Santorini Superyacht & Cliffside Villa',
+            'destination' => 'Oia & Cyclades, Greece',
+            'duration' => '4 Days / 3 Nights',
+            'celebrity_host' => 'Michele Morrone',
+            'host_image' => 'MICHELE-MORRONE.png',
+            'host_slug' => 'michele-morrone',
+            'image' => 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80',
+            'price' => '$12,900 / guest',
+            'tag' => 'Mediterranean VIP',
+            'category' => 'Yacht & Coast',
+            'rating' => '5.0 (31 reviews)',
+            'highlights' => ['Private 120ft Caldera Yacht', 'Cliffside Infinity Cave Suites', 'Private Vineyard Gastronomy', 'VIP Sunset Acoustic Gala'],
+            'description' => 'Sail the Aegean Sea with Michele Morrone. Marvel at world-famous Oia sunsets from a luxury yacht, savor private Mediterranean feasts, and celebrate under the stars at an intimate clifftop estate.'
+        ],
+        [
+            'id' => 4,
+            'slug' => 'bali-park-seo-joon',
+            'title' => 'Bali Rainforest Wellness & Zen Estate',
+            'destination' => 'Ubud & Uluwatu, Bali',
+            'duration' => '7 Days / 6 Nights',
+            'celebrity_host' => 'Park Seo-joon',
+            'host_image' => 'Park-Seo-joon.png',
+            'host_slug' => 'park-seo-joon',
+            'image' => 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80',
+            'price' => '$9,800 / guest',
+            'tag' => 'Zen Retreat',
+            'category' => 'Wellness',
+            'rating' => '4.9 (28 reviews)',
+            'highlights' => ['Private River Bamboo Estate', 'Holistic Sound Baths & Spa', 'Curated Organic Culinary Experience', 'Intimate Cultural & Art Tour'],
+            'description' => 'Recharge body and soul in the lush canopy of Ubud with Park Seo-joon. Features world-class wellness therapy, private infinity villa suites, and rejuvenating culinary journeys in paradise.'
+        ],
+        [
+            'id' => 5,
+            'slug' => 'french-riviera-jason-momoa',
+            'title' => 'French Riviera Superyacht Voyage',
+            'destination' => 'Cannes & Monte Carlo, France',
+            'duration' => '5 Days / 4 Nights',
+            'celebrity_host' => 'Jason Momoa',
+            'host_image' => 'Jason-Momoa.png',
+            'host_slug' => 'jason-momoa',
+            'image' => 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80',
+            'price' => '$22,500 / guest',
+            'tag' => 'High Glamour',
+            'category' => 'Superyacht',
+            'rating' => '5.0 (15 reviews)',
+            'highlights' => ['150ft Tri-Deck Superyacht', 'Monaco VIP Club Access', 'Private Speedboat Safari', 'Exclusive Beach Club Soiree'],
+            'description' => 'Live the epitome of Mediterranean glamour with Jason Momoa. Anchor along Cannes and Monte Carlo with private yacht suites, jet skis, and five-star culinary service.'
+        ],
+        [
+            'id' => 6,
+            'slug' => 'tokyo-kyoto-song-joong-ki',
+            'title' => 'Tokyo Skyline & Kyoto Heritage Tour',
+            'destination' => 'Tokyo & Kyoto, Japan',
+            'duration' => '6 Days / 5 Nights',
+            'celebrity_host' => 'Song Joong-ki',
+            'host_image' => 'SONG-JOONG-KI.png',
+            'host_slug' => 'song-joong-ki',
+            'image' => 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80',
+            'price' => '$16,000 / guest',
+            'tag' => 'Cultural VIP',
+            'category' => 'Metropolis & Zen',
+            'rating' => '4.9 (22 reviews)',
+            'highlights' => ['Penthouse Tokyo Skyline Suite', 'First-Class Shinkansen Travel', 'Historic Ryokan Hot Spring', 'Private Kaiseki Masterclass'],
+            'description' => 'Embark on an exclusive journey through Japan’s most captivating sights alongside Song Joong-ki. Experience private temple viewings in Kyoto, Michelin-starred culinary dining in Ginza, and traditional tea ceremonies.'
+        ],
+    ];
+
+    return $vacations;
+}
+
+function get_vacation_by_slug(string $slug): ?array
+{
+    foreach (get_vacations() as $v) {
+        if ($v['slug'] === $slug) {
+            return $v;
+        }
+    }
+    return null;
+}

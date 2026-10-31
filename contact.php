@@ -56,7 +56,9 @@ require __DIR__ . '/includes/templates/header.php';
 
 <section class="page-title-band">
     <div class="container">
-        <h1>Contact Us</h1>
+        <span class="badge badge-gold" style="margin-bottom: 10px;">PRIVATE INQUIRIES</span>
+        <h1 class="text-gold">Contact Our Concierge</h1>
+        <p>Reach our private VIP team for bookings, press inquiries, or partnership proposals.</p>
     </div>
 </section>
 
@@ -94,14 +96,16 @@ require __DIR__ . '/includes/templates/header.php';
                         <textarea name="message" rows="6" required><?= e($_POST['message'] ?? '') ?></textarea>
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary">Send Private Message</button>
             </form>
 
             <div class="contact-info">
-                <h3>Get in touch</h3>
-                <p><?= e(get_setting('contact_address')) ?></p>
-                <p><?= e(get_setting('contact_email')) ?></p>
-                <p><?= e(get_setting('contact_phone')) ?></p>
+                <h3>VIP Concierge Desk</h3>
+                <p style="color: var(--color-text);">📍 <?= e(get_setting('contact_address')) ?></p>
+                <p style="color: var(--color-text);">📧 <?= e(get_setting('contact_email')) ?></p>
+                <p style="color: var(--color-text);">📞 <?= e(get_setting('contact_phone')) ?></p>
+                <hr style="border-color: var(--color-border); margin: 18px 0;">
+                <p style="font-size: 0.88rem;">For urgent celebrity availability or same-day bookings, please call directly. Our concierge team operates 24/7.</p>
             </div>
         </div>
     </div>
