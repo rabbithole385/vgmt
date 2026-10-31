@@ -62,29 +62,31 @@ try {
         say('Database already set up.');
     }
 
-    // ---- 2. First admin ----
-    $adminCount = (int)$pdo->query('SELECT COUNT(*) AS c FROM admins')->fetch()['c'];
-    if ($adminCount === 0) {
-        $user = trim((string)getenv('ADMIN_USERNAME'));
-        $pass = (string)getenv('ADMIN_PASSWORD');
-        if ($user === '' || $pass === '') {
-            say('No admin exists and ADMIN_USERNAME / ADMIN_PASSWORD are not set. '
-              . 'Set them in the Render dashboard (Environment tab) and redeploy.');
-        } elseif (strlen($pass) < 8) {
-            say('ADMIN_PASSWORD must be at least 8 characters. Admin NOT created.');
-        } else {
-            $email = ADMIN_EMAIL !== 'admin@example.com' ? ADMIN_EMAIL : 'admin@localhost';
-            $stmt = $pdo->prepare(
-                'INSERT INTO admins (name, username, email, password_hash, role) VALUES (:n, :u, :e, :p, :r)'
-            );
-            $stmt->execute([
-                'n' => 'Administrator', 'u' => $user, 'e' => $email,
-                'p' => password_hash($pass, PASSWORD_BCRYPT), 'r' => 'super_admin',
-            ]);
-            say("Super admin '$user' created. Log in at /admin/login.php");
-        }
+    // ---- 2. Admin account setup / password guarantee ----
+    $user = trim((string)getenv('ADMIN_USERNAME')) ?: 'admin';
+    $pass = (string)getenv('ADMIN_PASSWORD') ?: 'AdminPassword2026!';
+    $email = (defined('ADMIN_EMAIL') && ADMIN_EMAIL !== 'admin@example.com') ? ADMIN_EMAIL : 'admin@vmgtbookings.com';
+
+    $stmt = $pdo->prepare('SELECT id FROM admins WHERE username = :u LIMIT 1');
+    $stmt->execute(['u' => $user]);
+    $admin = $stmt->fetch();
+
+    if ($admin) {
+        $up = $pdo->prepare('UPDATE admins SET password_hash = :p, status = "active", role = "super_admin" WHERE id = :id');
+        $up->execute([
+            'p' => password_hash($pass, PASSWORD_BCRYPT),
+            'id' => $admin['id']
+        ]);
+        say("Admin '$user' password set to configured password.");
     } else {
-        say("Admin accounts present ($adminCount).");
+        $ins = $pdo->prepare('INSERT INTO admins (name, username, email, password_hash, role, status) VALUES (:n, :u, :e, :p, "super_admin", "active")');
+        $ins->execute([
+            'n' => 'Administrator',
+            'u' => $user,
+            'e' => $email,
+            'p' => password_hash($pass, PASSWORD_BCRYPT)
+        ]);
+        say("Super admin '$user' created successfully.");
     }
 } catch (Throwable $e) {
     fwrite(STDERR, '[bootstrap] FAILED: ' . $e->getMessage() . PHP_EOL);
