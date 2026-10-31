@@ -16,62 +16,32 @@ $vacations = array_slice(get_vacations(), 0, 3);
 require __DIR__ . '/includes/templates/header.php';
 ?>
 
-<!-- Immersive Cinematic Hero Section -->
+<!-- Pro Cinematic Hero Section -->
 <section class="cinematic-hero">
     <div class="hero-backdrop"></div>
     <div class="hero-overlay-gradient"></div>
     
     <div class="container hero-container">
         <div class="hero-content">
-            <div class="hero-badge-wrap">
-                <span class="badge badge-gold">
-                    <span class="badge-dot-live"></span>
-                    ★ PREMIER TALENT & VIP VACATION CONCIERGE
-                </span>
-            </div>
+            <span class="badge badge-gold hero-badge">
+                <span class="badge-dot-live"></span>
+                ★ PRIVATE VIP CONCIERGE
+            </span>
             
             <h1 class="hero-title">
-                Where Iconic Stars Meet <br><span class="text-gold">Unforgettable Moments</span>
+                Book Global Icons. <br><span class="text-gold">Live The Extraordinary.</span>
             </h1>
             
             <p class="hero-description">
-                Direct, discreet access to Hollywood A-listers, global music chart-toppers, keynote visionaries, and private island luxury getaways.
+                Direct, confidential access to world-renowned celebrities and luxury private island retreats.
             </p>
             
             <div class="hero-actions">
                 <a href="/book.php" class="btn btn-primary btn-lg">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                    Book A Celebrity
+                    ⚡ Book VIP Talent
                 </a>
                 <a href="/vacations.php" class="btn btn-outline btn-lg">
-                    🌴 Explore VIP Vacations
-                </a>
-            </div>
-
-            <!-- Floating Quick Concierge Bar (Desktop & Mobile) -->
-            <div class="hero-concierge-bar">
-                <a href="/celebrities.php" class="concierge-col">
-                    <div class="concierge-icon">⭐</div>
-                    <div>
-                        <span class="concierge-label">TALENT ROSTER</span>
-                        <span class="concierge-val">Browse 500+ Global Icons</span>
-                    </div>
-                </a>
-                <div class="concierge-divider"></div>
-                <a href="/vacations.php" class="concierge-col">
-                    <div class="concierge-icon">🌴</div>
-                    <div>
-                        <span class="concierge-label">VIP GETAWAYS</span>
-                        <span class="concierge-val">Maldives, Swiss Alps, Cannes</span>
-                    </div>
-                </a>
-                <div class="concierge-divider"></div>
-                <a href="/book.php" class="concierge-col concierge-cta">
-                    <div class="concierge-icon">⚡</div>
-                    <div>
-                        <span class="concierge-label">FAST-TRACK</span>
-                        <span class="concierge-val">Instant VIP Inquiry &rarr;</span>
-                    </div>
+                    🌴 Explore Vacations
                 </a>
             </div>
         </div>

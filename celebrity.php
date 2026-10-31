@@ -36,7 +36,7 @@ foreach (get_vacations() as $vac) {
 require __DIR__ . '/includes/templates/header.php';
 ?>
 
-<section class="celeb-profile" style="padding: 60px 0;">
+<section class="celeb-profile" style="padding: 120px 0 60px;">
     <div class="container profile-grid">
         <div class="profile-photo" style="box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid var(--color-border-gold); position: relative;">
             <img src="/uploads/celebrities/<?= e($celeb['image']) ?>" alt="<?= e($celeb['name']) ?>">
